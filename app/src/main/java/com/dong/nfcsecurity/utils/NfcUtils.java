@@ -12,6 +12,7 @@ import android.nfc.Tag;
 import android.nfc.tech.Ndef;
 import android.os.Parcelable;
 import android.provider.Settings;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -72,10 +73,9 @@ public class NfcUtils {
         if (rawArray != null) {  
             NdefMessage mNdefMsg = (NdefMessage) rawArray[0];
             NdefRecord mNdefRecord = mNdefMsg.getRecords()[0];
-            if (mNdefRecord != null) {  
-                String readResult = new String(mNdefRecord.getPayload(), "UTF-8");  
-                return readResult;  
-            }  
+            if (mNdefRecord != null) {
+                return new String(mNdefRecord.getPayload(), "UTF-8");
+            }
         }  
         return "";  
     }  

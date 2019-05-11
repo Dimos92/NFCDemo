@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">NfcSecurity</string>
+    <string name="app_name">化妆品NFC防伪检测</string>
+    <string name="true_value">假货</string>
+    <string name="detect">请监测</string>
 </resources>
