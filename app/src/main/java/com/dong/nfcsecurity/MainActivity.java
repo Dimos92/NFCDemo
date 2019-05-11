@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout llFactory;
     private LinearLayout llReseller;
     private LinearLayout llResult;
+
+    private CardView cvResaler;
+    private CardView cvFactory;
+    private CardView cvDecoration;
+
     private TextView tvHint;
 
     @Override
@@ -49,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         llReseller = $(R.id.ll_resaler);
         llResult = $(R.id.ll_result);
         tvHint = $(R.id.tv_hint);
+        cvResaler = $(R.id.cv_resaler);
+        cvFactory = $(R.id.cv_factory);
+        cvDecoration = $(R.id.cv_decoration);
     }
 
 
@@ -100,10 +109,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setResellerViews(Decoration.Reseller reseller) {
+        //如果要显示厂商信息，就注释这行
+        cvResaler.setVisibility(View.VISIBLE);
+        //如果要显示厂商信息，就注释这行
+
         llReseller.removeAllViews();
-        llReseller.setVisibility(View.VISIBLE);
-        PairContentView id = getPairContentView("经销商编号", reseller.getId());
-        llReseller.addView(id);
+//        PairContentView id = getPairContentView("经销商编号", reseller.getId());
+//        llReseller.addView(id);
         PairContentView name = getPairContentView("经销商名称", reseller.getName());
         llReseller.addView(name);
         PairContentView inDate = getPairContentView("接货日期", reseller.getInDate());
@@ -113,10 +125,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setFactoryViews(Decoration.Factory factory) {
+        //如果要显示厂商信息，就注释这行
+        cvFactory.setVisibility(View.VISIBLE);
+        //如果要显示厂商信息，就注释这行
+
         llFactory.removeAllViews();
         llFactory.setVisibility(View.VISIBLE);
-        PairContentView id = getPairContentView("厂商编号", factory.getId());
-        llFactory.addView(id);
+//        PairContentView id = getPairContentView("厂商编号", factory.getId());
+//        llFactory.addView(id);
         PairContentView name = getPairContentView("厂商名称", factory.getName());
         llFactory.addView(name);
         PairContentView address = getPairContentView("厂商地址", factory.getAddress());
@@ -128,10 +144,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDecorationView(Decoration decoration) {
+        //如果要显示化妆品信息，就注释这行
+        cvDecoration.setVisibility(View.VISIBLE);
+        //如果要显示化妆品信息，就注释这行
+
         llDecoration.removeAllViews();
         llDecoration.setVisibility(View.VISIBLE);
-        PairContentView id = getPairContentView("化妆品编号", decoration.getId());
-        llDecoration.addView(id);
+//        PairContentView id = getPairContentView("化妆品编号", decoration.getId());
+//        llDecoration.addView(id);
         PairContentView name = getPairContentView("化妆品名称", decoration.getName());
         llDecoration.addView(name);
         PairContentView date = getPairContentView("化妆品生产日期", decoration.getProduceDate());

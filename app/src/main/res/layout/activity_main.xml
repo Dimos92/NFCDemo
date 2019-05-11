@@ -15,11 +15,22 @@
         android:visibility="gone"
         tools:context=".MainActivity">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="真货"
+            android:textColor="#fff"
+            android:textSize="50sp" />
+
+
         <android.support.v7.widget.CardView
+            android:id="@+id/cv_decoration"
             style="@style/MyCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:visibility="gone"
             app:contentPadding="10dp">
 
             <LinearLayout
@@ -32,10 +43,12 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cv_factory"
             style="@style/MyCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:visibility="gone"
             app:contentPadding="10dp">
 
             <LinearLayout
@@ -48,10 +61,12 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
+            android:id="@+id/cv_resaler"
             style="@style/MyCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:visibility="gone"
             app:contentPadding="10dp">
 
             <LinearLayout
