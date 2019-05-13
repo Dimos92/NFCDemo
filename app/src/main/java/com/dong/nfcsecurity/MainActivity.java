@@ -83,8 +83,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             String str = NfcUtils.readNFCFromTag(intent);
             Log.i(TAG, "readNFCFromTag == " + str);
-            Decoration decoration = helper.selectDecoration(Integer.parseInt(str.replace("cn", "").trim()));
-            if (decoration == null) {
+            String result = str.replace("cn", "").trim();
+            Decoration decoration = helper.selectDecoration(Integer.parseInt(result));
+            if (decoration == null || decoration.getSecurity().isCheck()) {
                 llResult.setVisibility(View.GONE);
                 tvHint.setVisibility(View.VISIBLE);
                 tvHint.setText("假货");
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                 setContent(decoration);
             }
             Log.i(TAG, "onNewIntent: decoration == " + decoration);
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

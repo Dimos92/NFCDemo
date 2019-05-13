@@ -26,7 +26,6 @@ public class DecorationDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
     }
 
     @Override
@@ -52,8 +51,14 @@ public class DecorationDBHelper extends SQLiteOpenHelper {
             queryFactory(id, decoration);
             querySecurity(id, decoration);
             queryReseller(id, decoration);
+            //修改标志变量
+            setSecurityChecked(id);
         }
         return decoration;
+    }
+
+    private void setSecurityChecked(int id) {
+        getWritableDatabase().execSQL("update fw_check_table set 'check' = 1 where hzpId = " + id);
     }
 
     private void queryFactory(int id, Decoration decoration) {
