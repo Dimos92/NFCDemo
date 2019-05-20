@@ -58,7 +58,11 @@ public class DecorationDBHelper extends SQLiteOpenHelper {
     }
 
     private void setSecurityChecked(int id) {
-        getWritableDatabase().execSQL("update fw_check_table set 'check' = 1 where hzpId = " + id);
+        Cursor cursor = getWritableDatabase().rawQuery("select * from fw_check_table where hzpId = ? ", new String[]{String.valueOf(id)});
+        cursor.moveToNext();
+        int check = cursor.getInt(cursor.getColumnIndex("check"));
+        cursor.close();
+        getWritableDatabase().execSQL("update fw_check_table set 'check' = " + (check + 1) + " where hzpId = " + id);
     }
 
     private void queryFactory(int id, Decoration decoration) {
@@ -97,7 +101,7 @@ public class DecorationDBHelper extends SQLiteOpenHelper {
         Cursor cursor = getWritableDatabase().rawQuery("select * from fw_check_table where hzpId = ? ", new String[]{String.valueOf(id)});
         while (cursor.moveToNext()) {
             security.setNo(cursor.getInt(cursor.getColumnIndex("No")));
-            security.setCheck(cursor.getInt(cursor.getColumnIndex("check")) != 0);
+            security.setCheck(cursor.getInt(cursor.getColumnIndex("check")));
             security.setLabelID(cursor.getString(cursor.getColumnIndex("bqId")));
         }
         cursor.close();

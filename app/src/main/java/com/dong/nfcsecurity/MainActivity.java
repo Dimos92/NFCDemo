@@ -16,8 +16,6 @@ import com.dong.nfcsecurity.db.model.Decoration;
 import com.dong.nfcsecurity.utils.NfcUtils;
 import com.dong.nfcsecurity.view.PairContentView;
 
-import java.io.UnsupportedEncodingException;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -33,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private CardView cvDecoration;
 
     private TextView tvHint;
+    private TextView tvTimes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         cvResaler = $(R.id.cv_resaler);
         cvFactory = $(R.id.cv_factory);
         cvDecoration = $(R.id.cv_decoration);
+        tvTimes = $(R.id.tv_times);
     }
 
 
@@ -85,19 +85,24 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "readNFCFromTag == " + str);
             String result = str.replace("cn", "").trim();
             Decoration decoration = helper.selectDecoration(Integer.parseInt(result));
-            if (decoration == null || decoration.getSecurity().isCheck()) {
+            if (decoration == null) {
                 llResult.setVisibility(View.GONE);
                 tvHint.setVisibility(View.VISIBLE);
                 tvHint.setText("假货");
-            } else {
+            } else if (decoration.getSecurity().isCheck() >= 0) {
+                tvTimes.setText(String.format(getString(R.string.format_title), decoration.getSecurity().isCheck() + 1));
                 llResult.setVisibility(View.VISIBLE);
                 tvHint.setVisibility(View.GONE);
                 setContent(decoration);
             }
             Log.i(TAG, "onNewIntent: decoration == " + decoration);
-        } catch (Exception e) {
+        } catch (
+                Exception e)
+
+        {
             e.printStackTrace();
         }
+
     }
 
     public void setContent(Decoration decoration) {

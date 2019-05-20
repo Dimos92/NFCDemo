@@ -16,13 +16,22 @@
         tools:context=".MainActivity">
 
         <TextView
+            android:id="@+id/tv_times"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:text="真货"
+            android:text="@string/true_text"
             android:textColor="#fff"
-            android:textSize="50sp" />
+            android:textSize="18sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:text="下面是该产品详细信息："
+            android:textColor="#fff"
+            android:textSize="18sp" />
 
         <android.support.v7.widget.CardView
             android:id="@+id/cv_decoration"

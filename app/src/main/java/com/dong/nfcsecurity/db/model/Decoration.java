@@ -97,7 +97,7 @@ public class Decoration {
     public static class Security {
         private int no;
         private String labelID;
-        private boolean check;
+        private int check;
 
         @Override
         public String toString() {
@@ -124,11 +124,11 @@ public class Decoration {
             this.labelID = labelID;
         }
 
-        public boolean isCheck() {
+        public int isCheck() {
             return check;
         }
 
-        public void setCheck(boolean check) {
+        public void setCheck(int check) {
             this.check = check;
         }
     }

@@ -2,4 +2,6 @@
     <string name="app_name">化妆品NFC防伪检测</string>
     <string name="true_value">假货</string>
     <string name="detect">请监测</string>
+    <string name="true_text">真货：该产品经过检测为“真货”！</string>
+    <string name="fake">假货：本次查询为第“2”次查询，该标签已被使用！</string>
 </resources>
