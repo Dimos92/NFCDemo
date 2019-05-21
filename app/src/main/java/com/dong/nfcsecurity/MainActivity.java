@@ -86,23 +86,27 @@ public class MainActivity extends AppCompatActivity {
             String result = str.replace("cn", "").trim();
             Decoration decoration = helper.selectDecoration(Integer.parseInt(result));
             if (decoration == null) {
-                llResult.setVisibility(View.GONE);
-                tvHint.setVisibility(View.VISIBLE);
+                setResultVisible(View.GONE, View.VISIBLE);
                 tvHint.setText("假货");
-            } else if (decoration.getSecurity().isCheck() >= 0) {
-                tvTimes.setText(String.format(getString(R.string.format_title), decoration.getSecurity().isCheck() + 1));
-                llResult.setVisibility(View.VISIBLE);
-                tvHint.setVisibility(View.GONE);
+            } else if (decoration.getSecurity().isCheck() > 0) {
+                tvHint.setText(String.format(getString(R.string.has_used), decoration.getSecurity().isCheck() + 1));
+                setResultVisible(View.GONE, View.VISIBLE);
+            } else if (decoration.getSecurity().isCheck() == 0) {
+                tvTimes.setText(R.string.true_text);
+                setResultVisible(View.VISIBLE, View.GONE);
                 setContent(decoration);
             }
             Log.i(TAG, "onNewIntent: decoration == " + decoration);
         } catch (
-                Exception e)
-
-        {
+                Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    private void setResultVisible(int trueType, int fakeType) {
+        llResult.setVisibility(trueType);
+        tvHint.setVisibility(fakeType);
     }
 
     public void setContent(Decoration decoration) {

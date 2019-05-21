@@ -3,5 +3,5 @@
     <string name="true_value">假货</string>
     <string name="detect">请监测</string>
     <string name="true_text">真货：该产品经过检测为“真货”！</string>
-    <string name="fake">假货：本次查询为第“2”次查询，该标签已被使用！</string>
+    <string name="has_used">假货：本次查询为第%d次查询，该标签已被使用！</string>
 </resources>
