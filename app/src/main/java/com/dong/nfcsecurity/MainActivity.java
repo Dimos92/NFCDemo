@@ -82,8 +82,9 @@ public class MainActivity extends AppCompatActivity {
         //调用工具方法，读取NFC数据
         try {
             String str = NfcUtils.readNFCFromTag(intent);
+            String[] infos = str.split(" ");
             Log.i(TAG, "readNFCFromTag == " + str);
-            String result = str.replace("cn", "").trim();
+            String result = infos[0].replace("cn", "").trim();
             Decoration decoration = helper.selectDecoration(Integer.parseInt(result));
             if (decoration == null) {
                 setResultVisible(View.GONE, View.VISIBLE);
